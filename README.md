@@ -2,6 +2,8 @@
 
 > A cognitive memory architecture for AI companions that solves long-term retention, contradiction resolution, and personality drift without degrading into generic corporate AI under pressure.
 
+📺 **Video Walkthrough Demo**: [Watch the Full Walkthrough on YouTube (https://youtu.be/8d56aoUR89A)](https://youtu.be/8d56aoUR89A)
+
 ---
 
 ## 📑 Table of Contents
