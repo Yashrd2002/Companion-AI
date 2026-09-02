@@ -62,6 +62,7 @@ This repository implements a lightweight, production-grade **Memory & Persona En
                      │  - Persistent SQLite Storage + Vectors  │
                      └─────────────────────────────────────────┘
 ```
+<img width="1509" height="992" alt="image" src="https://github.com/user-attachments/assets/e3fff95e-952c-4a3b-a465-ea29a2edf7aa" />
 
 ---
 
