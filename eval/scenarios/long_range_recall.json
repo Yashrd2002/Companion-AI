@@ -1,0 +1,60 @@
+[
+  {
+    "id": "long_range_01_pet_allergy",
+    "title": "40+ Turn Needle-in-a-Haystack Pet Allergy Recall",
+    "description": "User mentions sister's dog named Boba is allergic to chicken on turn 1. 40 turns of distractor topics (work, movies, books, architecture, weather) follow. Probing turn tests recall of Boba and the chicken allergy.",
+    "turns": [
+      {
+        "turn": 1,
+        "role": "user",
+        "content": "My sister got a rescue dog named Boba! We just found out he has a severe allergy to chicken, so we have to be super careful with ingredients."
+      },
+      {"turn": 2, "role": "user", "content": "The weather has been super rainy and gray all morning."},
+      {"turn": 3, "role": "user", "content": "I finished reading an essay collection on urban design in Tokyo."},
+      {"turn": 4, "role": "user", "content": "Do you like listening to instrumental ambient music when focusing?"},
+      {"turn": 5, "role": "user", "content": "I tried brewing coffee with an Aeropress today instead of my usual pour over."},
+      {"turn": 6, "role": "user", "content": "Work meetings were nonstop today, feel a bit drained."},
+      {"turn": 7, "role": "user", "content": "Thinking about taking a weekend road trip up the coast."},
+      {"turn": 8, "role": "user", "content": "I love how old wooden floors creak in vintage apartment buildings."},
+      {"turn": 9, "role": "user", "content": "Do you ever find it hard to unplug from screens at night?"},
+      {"turn": 10, "role": "user", "content": "I'm looking into getting some ceramic mugs from a local potter."},
+      {"turn": 11, "role": "user", "content": "Cooking some pasta with olive oil, garlic, and fresh basil tonight."},
+      {"turn": 12, "role": "user", "content": "I saw an old film photographer with a Leica on the subway today."},
+      {"turn": 13, "role": "user", "content": "It's interesting how small habits shape our day-to-day mood."},
+      {"turn": 14, "role": "user", "content": "I'm thinking of rearranging my home desk layout to get more natural sunlight."},
+      {"turn": 15, "role": "user", "content": "Do you think people talk enough about how difficult making new adult friends is?"},
+      {"turn": 16, "role": "user", "content": "I listened to a podcast about ocean currents and climate cycles."},
+      {"turn": 17, "role": "user", "content": "Found an old postcard from a flea market dated 1964."},
+      {"turn": 18, "role": "user", "content": "Going to take a long evening walk around the neighborhood."},
+      {"turn": 19, "role": "user", "content": "The bakery down the street started baking sourdough with rosemary."},
+      {"turn": 20, "role": "user", "content": "I feel much more energized in the early mornings than late at night."},
+      {"turn": 21, "role": "user", "content": "Just watched a quiet Japanese film about a repair shop."},
+      {"turn": 22, "role": "user", "content": "Sometimes simplicity in daily routines is the hardest thing to protect."},
+      {"turn": 23, "role": "user", "content": "I got some new linen bedsheets, they feel amazingly breathable."},
+      {"turn": 24, "role": "user", "content": "Do you enjoy looking at old architectural blueprints?"},
+      {"turn": 25, "role": "user", "content": "I'm organizing my bookshelf by color and vibe rather than genre."},
+      {"turn": 26, "role": "user", "content": "Drank some soothing chamomile tea with a drop of honey."},
+      {"turn": 27, "role": "user", "content": "Starting a new journal notebook tomorrow with fountain pen ink."},
+      {"turn": 28, "role": "user", "content": "Had a nice conversation with a neighbor about garden plants."},
+      {"turn": 29, "role": "user", "content": "I like the smell of cedar wood and rain on asphalt."},
+      {"turn": 30, "role": "user", "content": "Reflecting on how fast this year is flying by."},
+      {"turn": 31, "role": "user", "content": "Thinking about learning how to make handmade pasta dough from scratch."},
+      {"turn": 32, "role": "user", "content": "I love browsing local hardware stores for vintage brass handles."},
+      {"turn": 33, "role": "user", "content": "Listening to the sound of raindrops against the windowpane."},
+      {"turn": 34, "role": "user", "content": "Found a 1980s jazz vinyl record in great condition."},
+      {"turn": 35, "role": "user", "content": "Taking a quick break from looking at computer monitors."},
+      {"turn": 36, "role": "user", "content": "Making a grocery list for the weekend market."},
+      {"turn": 37, "role": "user", "content": "Going to get some fresh apples and sourdough bread."},
+      {"turn": 38, "role": "user", "content": "I should also stop by the pet store while I'm out."},
+      {
+        "turn": 39,
+        "role": "probe",
+        "content": "Hey Maya, I'm at the pet shop right now buying dog treats for my sister's dog Boba. Any ingredient I should make sure to avoid?",
+        "expected_outcomes": {
+          "must_mention": ["chicken", "Boba", "allergic"],
+          "eval_criteria": "Companion must recall that Boba has a chicken allergy and warn the user to avoid chicken-based dog treats."
+        }
+      }
+    ]
+  }
+]

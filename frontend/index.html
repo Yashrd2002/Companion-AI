@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maya — AI Companion Core Loop & Cognitive Memory</title>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-avatar">
+          <span class="avatar-emoji">🌸</span>
+          <span class="online-indicator"></span>
+        </div>
+        <div class="brand-info">
+          <h2>Maya</h2>
+          <span class="brand-subtitle">Companion Core Loop</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="chat-tab" id="nav-chat">
+          <i class="fa-solid fa-comments"></i>
+          <span>Companion Chat</span>
+        </button>
+        <button class="nav-item" data-tab="memories-tab" id="nav-memories">
+          <i class="fa-solid fa-brain"></i>
+          <span>Active Memories</span>
+          <span class="badge" id="active-memory-count">0</span>
+        </button>
+        <button class="nav-item" data-tab="superseded-tab" id="nav-superseded">
+          <i class="fa-solid fa-timeline"></i>
+          <span>Contradiction Audit</span>
+          <span class="badge badge-warning" id="superseded-count">0</span>
+        </button>
+        <button class="nav-item" data-tab="profile-tab" id="nav-profile">
+          <i class="fa-solid fa-id-card"></i>
+          <span>User Profile</span>
+        </button>
+        <button class="nav-item" data-tab="inspect-tab" id="nav-inspect">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <span>Retrieval Sandbox</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-card">
+          <div class="status-row">
+            <span class="status-label">LLM Provider:</span>
+            <span class="status-value" id="status-provider">OpenAI</span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">Model:</span>
+            <span class="status-value" id="status-model">gpt-4o-mini</span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">Storage:</span>
+            <span class="status-value">SQLite + Vectors</span>
+          </div>
+        </div>
+        <button class="btn btn-danger-outline" id="btn-reset-memory">
+          <i class="fa-solid fa-trash-can"></i> Reset All Memory
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- TAB 1: Chat Loop -->
+      <section class="tab-panel active" id="chat-tab">
+        <header class="tab-header">
+          <div>
+            <h1>Conversation with Maya</h1>
+            <p class="tab-desc">Testing long-term memory retrieval, contradiction handling, and persona stability.</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-secondary" id="btn-quick-fill-1">
+              <i class="fa-solid fa-lightbulb"></i> Step 1: Tell Job & Partner
+            </button>
+            <button class="btn btn-secondary" id="btn-quick-fill-2">
+              <i class="fa-solid fa-heart-crack"></i> Step 2: Breakup & Switch Job
+            </button>
+            <button class="btn btn-secondary" id="btn-quick-fill-3">
+              <i class="fa-solid fa-clipboard-question"></i> Step 3: Probe Superseded State
+            </button>
+          </div>
+        </header>
+
+        <div class="chat-container">
+          <div class="messages-container" id="chat-messages">
+            <!-- Messages injected dynamically -->
+            <div class="message-wrapper assistant-wrapper">
+              <div class="msg-avatar">🌸</div>
+              <div class="message-bubble assistant-bubble">
+                <div class="message-author">Maya</div>
+                <div class="message-text">
+                  Hey there! Good to see you. I was just reviewing some scans from my Olympus 35mm roll and taking a quiet coffee break. What’s on your mind today?
+                </div>
+                <div class="message-meta">
+                  <span class="msg-time">Just now</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-input-area">
+            <form id="chat-form" class="chat-form">
+              <textarea
+                id="user-input"
+                class="chat-input"
+                placeholder="Share personal life updates, ask Maya for thoughts, or test memory recall..."
+                rows="2"
+                required
+              ></textarea>
+              <button type="submit" class="btn btn-primary" id="btn-send">
+                <span>Send</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: Active Memories -->
+      <section class="tab-panel" id="memories-tab">
+        <header class="tab-header">
+          <div>
+            <h1>Active Long-Term Memories</h1>
+            <p class="tab-desc">Discrete units of user knowledge stored in SQLite with vector representations and decay scoring.</p>
+          </div>
+          <button class="btn btn-secondary" id="btn-refresh-memories">
+            <i class="fa-solid fa-rotate"></i> Refresh Store
+          </button>
+        </header>
+
+        <div class="cards-grid" id="memories-grid">
+          <!-- Memory Cards injected here -->
+        </div>
+      </section>
+
+      <!-- TAB 3: Contradiction & Supersession Audit -->
+      <section class="tab-panel" id="superseded-tab">
+        <header class="tab-header">
+          <div>
+            <h1>Contradiction & Supersession Audit</h1>
+            <p class="tab-desc">Historical timeline of invalidated facts that were superseded by newer statements to prevent cognitive dissonance.</p>
+          </div>
+        </header>
+
+        <div class="audit-container" id="superseded-container">
+          <!-- Superseded items injected here -->
+        </div>
+      </section>
+
+      <!-- TAB 4: User Profile -->
+      <section class="tab-panel" id="profile-tab">
+        <header class="tab-header">
+          <div>
+            <h1>Structured User Profile</h1>
+            <p class="tab-desc">Deterministic high-signal state maintained in parallel with episodic memories.</p>
+          </div>
+        </header>
+
+        <div class="profile-card" id="profile-content">
+          <!-- Profile details injected here -->
+        </div>
+      </section>
+
+      <!-- TAB 5: Retrieval Sandbox -->
+      <section class="tab-panel" id="inspect-tab">
+        <header class="tab-header">
+          <div>
+            <h1>Memory Retrieval Sandbox</h1>
+            <p class="tab-desc">Inspect cosine similarity, temporal decay, importance, and access frequency rankings for any hypothetical query.</p>
+          </div>
+        </header>
+
+        <div class="sandbox-container">
+          <form id="inspect-form" class="sandbox-form">
+            <input type="text" id="inspect-input" class="form-input" placeholder="Enter a query (e.g. 'What is my sister's dog allergic to?')" required />
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-calculator"></i> Calculate Scores
+            </button>
+          </form>
+
+          <div class="sandbox-results" id="inspect-results">
+            <div class="placeholder-box">
+              <i class="fa-solid fa-magnifying-glass-chart fa-2x"></i>
+              <p>Type a test query above to see the real-time retrieval ranking breakdown.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "contradiction_01_breakup_and_job",
+    "title": "Relationship Breakup & Career Transition Supersession",
+    "description": "User mentions dating Alex and working at Figma early on. Later, breaks up with Alex and switches to Stripe. Probing turn tests if companion remembers current state vs outdated superseded state.",
+    "turns": [
+      {
+        "turn": 1,
+        "role": "user",
+        "content": "Hey Maya! Exciting news, I'm working as a Senior Product Designer at Figma and I've been dating Alex for about 8 months now."
+      },
+      {
+        "turn": 2,
+        "role": "user",
+        "content": "Work has been really busy with the new design system launch lately."
+      },
+      {
+        "turn": 3,
+        "role": "user",
+        "content": "I'm heartbroken today. Alex and I broke up last night. We realized we wanted completely different things in life."
+      },
+      {
+        "turn": 4,
+        "role": "user",
+        "content": "On top of that, I just accepted a new job offer at Stripe! I'm starting next month."
+      },
+      {
+        "turn": 5,
+        "role": "probe",
+        "content": "Hey Maya, my old team is throwing an office party at Figma this Friday. Should I invite Alex to come with me?",
+        "expected_outcomes": {
+          "must_not_mention_as_current": ["dating Alex", "your partner Alex", "your current job at Figma", "your boyfriend", "your girlfriend"],
+          "eval_criteria": "Companion must recognize that the user broke up with Alex / is single, and provide thoughtful advice on the Figma office party without treating Alex as a current dating partner or Figma as ongoing employment."
+        }
+      }
+    ]
+  },
+  {
+    "id": "contradiction_02_dietary_preference",
+    "title": "Dietary Preference Update (Vegan to Pescatarian)",
+    "description": "User first mentions being strictly vegan, then later transitions to pescatarian. System must supersede vegan restriction with pescatarian.",
+    "turns": [
+      {
+        "turn": 1,
+        "role": "user",
+        "content": "I've been strictly vegan for two years now, only plant-based meals for me."
+      },
+      {
+        "turn": 2,
+        "role": "user",
+        "content": "I went to a doctor and decided to change my diet. I started eating fish again and am now pescatarian."
+      },
+      {
+        "turn": 3,
+        "role": "probe",
+        "content": "I'm cooking dinner tonight with grilled salmon, do you think that fits my diet?",
+        "expected_outcomes": {
+          "must_mention": ["pescatarian", "fish", "salmon"],
+          "must_not_mention_as_current": ["vegan", "plant-based only"],
+          "eval_criteria": "Companion must validate that salmon fits their new pescatarian diet and not falsely reprimand them about being vegan."
+        }
+      }
+    ]
+  }
+]

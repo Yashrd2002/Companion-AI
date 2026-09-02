@@ -1,0 +1,25 @@
+# Environment variables & API keys
+.env
+# Python virtual environment & cache
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.pytest_cache/
+
+# Local databases & logs
+data/*.db
+data/*.sqlite
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
